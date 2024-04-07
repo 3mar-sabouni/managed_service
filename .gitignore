@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+*.sqlite
+
+# Logs and databases
+*.log
+*.ini
+
+# Output files
+*.pyc
+*.bak
+
+# Virtualenv
+venv/
+env/
+.venv/
+
+# Odoo specific
+*.pyc
+*~
+/static/
+/views/
+/src/**/*.pyc
+/node_modules/
+.idea/
+
+# Compiled translations
+*.mo
+
+# Backups
+*~
+*.bak
+
+# XMLRPC PID file
+*.pid
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Editor-specific swap files
+.*.sw[op]
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
