@@ -8,10 +8,13 @@
     'website': "",
     'category': 'Helpdesk',
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['base','contacts'],
     'data': [
          'security/ir.model.access.csv',
          'views/managed_model_views.xml',
+         'views/managed_device_views.xml',
+         'views/device_type_views.xml',
+         
     ],
     'demo': [
         #  'demo/demo.xml',
