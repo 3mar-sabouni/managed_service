@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 
 class ManagedDevice(models.Model):
     _name = 'managed.device'
+    #_rec_name = "id"
 
     serial_number = fields.Char('Serial Number', required=True)
 
@@ -19,6 +20,7 @@ class ManagedDevice(models.Model):
             if len(record.serial_number) > 25:
                 raise ValidationError("Serial number must be at most 25 characters long.")
 
+    name = fields.Char('Name', required=True, readonly=True, default=lambda self: self.env['ir.sequence'].next_by_code('managed.device') or '/')
     model_id = fields.Many2one('managed.model', 'Model', required=True)
     type = fields.Many2one('device.type', 'Type', required=True)
     owner = fields.Many2one('res.partner', 'Owner')
@@ -27,6 +29,12 @@ class ManagedDevice(models.Model):
     pm_unit = fields.Selection([('hours', 'Hours'), ('days', 'Days'), ('pages', 'Pages')], 'PM Unit', required=True)
     last_pm_counter = fields.Integer('Last PM Counter')
     metrics_ids = fields.One2many('managed.metric', 'device_id', 'Metrics')
+    
+    @api.model
+    def create(self, vals):
+        if 'name' not in vals or vals.get('name') == '/':
+            vals['name'] = self.env['ir.sequence'].next_by_code('managed.device') or '/'
+        return super(ManagedDevice, self).create(vals)
 
 class DeviceType(models.Model):
     _name = 'device.type'
