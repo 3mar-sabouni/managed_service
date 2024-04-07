@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Device Type Form View -->
+        <record id="view_device_type_form" model="ir.ui.view">
+            <field name="name">device.type.form</field>
+            <field name="model">device.type</field>
+            <field name="arch" type="xml">
+                <form string="Device Type">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Device Type Form -->
+        <record id="action_device_type" model="ir.actions.act_window">
+            <field name="name">Device Types</field>
+            <field name="res_model">device.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu item for Device Types -->
+        <menuitem id="menu_managed_configration" name="Configration" parent="menu_managed_model_root" sequence="11"/>
+        <menuitem id="menu_device_types_form" name="Device Types" parent="menu_managed_configration" action="action_device_type"/>
+
+    </data>
+</odoo>

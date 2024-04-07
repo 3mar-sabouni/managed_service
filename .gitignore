@@ -23,7 +23,6 @@ env/
 *.pyc
 *~
 /static/
-/views/
 /src/**/*.pyc
 /node_modules/
 .idea/

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Managed Metric Form View -->
+        <record id="view_managed_metric_form" model="ir.ui.view">
+            <field name="name">managed.metric.form</field>
+            <field name="model">managed.metric</field>
+            <field name="arch" type="xml">
+                <form string="Metric">
+                    <sheet>
+                        <group>
+                            <field name="device_id"/>
+                            <field name="reading"/>
+                            <field name="date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_managed_metric_tree" model="ir.ui.view">
+            <field name="name">managed.metric.tree</field>
+            <field name="model">managed.metric</field>
+            <field name="arch" type="xml">
+                <tree string="Managed Metrics">
+                    <field name="device_id"/>
+                    <field name="reading"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_managed_metric" model="ir.actions.act_window">
+            <field name="name">Managed Metrics</field>
+            <field name="res_model">managed.metric</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_managed_metrics_tree" name="Metrics" parent="menu_managed_model" action="action_managed_metric"/>
+    </data>
+</odoo>

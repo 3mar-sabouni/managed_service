@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- XPath to modify the helpdesk.helpdesk_ticket_view_form -->
+        <record id="helpdesk_ticket_view_form_device_extension" model="ir.ui.view">
+            <field name="name">helpdesk.helpdesk_ticket_view_form.device_extension</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email_cc']" position="after">
+                    <!-- Add your fields here -->
+                    <field name="device_id" widget="many2one"/>
+                    <field name="serial_number" widget="char"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_helpdesk_ticket_search_extension" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.search.extension</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <!-- Add Filter for Device -->
+                    <field name="device_id"></field>
+                    <filter name="group_by_device" string="Device" context="{'group_by':'device_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
