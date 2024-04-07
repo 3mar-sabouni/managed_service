@@ -26,7 +26,7 @@ class ManagedDevice(models.Model):
     pm_cycle = fields.Integer('PM Cycle', required=True)
     pm_unit = fields.Selection([('hours', 'Hours'), ('days', 'Days'), ('pages', 'Pages')], 'PM Unit', required=True)
     last_pm_counter = fields.Integer('Last PM Counter')
-
+    metrics_ids = fields.One2many('managed.metric', 'device_id', 'Metrics')
 
 class DeviceType(models.Model):
     _name = 'device.type'

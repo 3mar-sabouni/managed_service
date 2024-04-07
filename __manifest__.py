@@ -14,6 +14,7 @@
          'views/managed_model_views.xml',
          'views/managed_device_views.xml',
          'views/device_type_views.xml',
+         'views/managed_metric_views.xml',
          
     ],
     'demo': [
